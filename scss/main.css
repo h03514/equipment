@@ -1,0 +1,32 @@
+#navbarToggleExternalContent {
+  display: block;
+  height: 100%;
+  min-height: 100%;
+}
+
+#navbarToggleExternalContent.menu-show {
+  -webkit-transform: translateX(0%);
+          transform: translateX(0%);
+}
+
+main .pos-f-t .fade-enter-active,
+main .pos-f-t .fade-leave-active {
+  -webkit-transition: opacity .5s;
+  transition: opacity .5s;
+}
+
+main .pos-f-t .fade-enter,
+main .pos-f-t .fade-leave-to {
+  opacity: 0;
+}
+
+main .pos-f-t .liHover:hover {
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  color: darkorange !important;
+}
+
+main .pos-f-t .mainDevice .titleName {
+  padding-bottom: 5px;
+}
+/*# sourceMappingURL=main.css.map */

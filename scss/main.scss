@@ -1,0 +1,33 @@
+#navbarToggleExternalContent {
+    display: block;
+    height: 100%;
+    min-height: 100%;
+}
+
+#navbarToggleExternalContent.menu-show {
+    transform: translateX(0%);
+}
+
+main {
+    .pos-f-t {
+        .fade-enter-active,
+        .fade-leave-active {
+            transition: opacity .5s;
+        }
+        .fade-enter,
+        .fade-leave-to
+        /* .fade-leave-active in <2.1.8 */
+        {
+            opacity: 0;
+        }
+        .liHover:hover {
+            transition: 0.3s;
+            color: darkorange !important;
+        }
+        .mainDevice {
+            .titleName {
+                padding-bottom: 5px;
+            }
+        }
+    }
+}

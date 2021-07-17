@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Equipment</title>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css' integrity='sha512-q3eWabyZPc1XTCmF+8/LuE1ozpg5xxn7iO89yfSOd5/oKvyqLngoNGsx8jq92Y8eXJ/IRxQbEC+FGSYxtk2oiw==' crossorigin='anonymous' />
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.2/css/bootstrap.min.css' />
+    <link rel="stylesheet" href="dist/style/common.css">
+    <link rel="stylesheet" href="dist/style/main.min.css">
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+
+<body>
+
+    <div id="app">
+        <header>
+            <nav class="navbar navbar-dark bg-dark">
+                <button @click="show = !show" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent">
+                       <span class="navbar-toggler-icon"></span>
+                </button>
+                <p class="text-center  text-white">Equipment Management</p>
+                <div class=" text-center text-white">
+                </div>
+            </nav>
+            <div class="container">
+                <h2></h2>
+            </div>
+        </header>
+        <main>
+            <div class="pos-f-t">
+                <div class="bg-dark colla pse position-fixed " name="fade" v-if="show" id="navbarToggleExternalContent">
+                    <div class="py-3">
+                        <div class="text-white mx-4"><a @click="fadeMe" href="javascript:;" class="liHover text-white">主機</a></div>
+                    </div>
+                    <div class="py-3">
+                        <div class="text-white mx-4"><a @click="fadeMe" href="javascript:;" class="liHover text-white">螢幕</a></div>
+                    </div>
+                    <div class="py-3">
+                        <div class="text-white mx-4"><a @click="fadeMe" href="javascript:;" class="liHover text-white">筆電</a></div>
+                    </div>
+                    <div class="py-3">
+                        <div class="text-white mx-4"><a @click="fadeMe" href="javascript:;" class="liHover text-white">印表機</a></div>
+                    </div>
+                </div>
+                <div class="bg-info p-4 mainDevice">
+                    <div class="row">
+                        <div class="col-sm-3 fw-bolder fs-5 titleName">SN</div>
+                        <div class="col-sm-2 fw-bolder fs-5 titleName">姓名</div>
+                        <div class="col-sm-3 fw-bolder fs-5 titleName">類別</div>
+                        <div class="col-sm-3 fw-bolder fs-5 titleName">型號</div>
+                        <div class="col-sm-1 fw-bolder fs-5 titleName"></div>
+                    </div>
+                    <div class="">
+                        <!-- <todo-item v-for="(todo, index) in todos" v-bind:key="todo.id" ></todo-item> -->
+                        <todo-item v-if="showType=='computer'" v-for="(todo, index) in todos" v-bind:key="todo.id" v-bind:qvesn="todo.qvesn" v-bind:title="todo.title" v-bind:type="todo.type" v-bind:model="todo.model"></todo-item>
+                    </div>
+                    <div class="">
+                        <todo-monitor v-if="showType=='monitor'" v-for="(item, index) in monitor" v-bind:key="item.id" v-bind:qvesn="item.qvesn" v-bind:title="item.title" v-bind:type="item.type" v-bind:model="item.model"></todo-monitor>
+                    </div>
+
+                </div>
+            </div>
+            <!-- <div id="todo-list-example" class="demo">
+                <div class="row">
+                    <todo-item v-for="(todo, index) in todos" v-bind:key="todo.id" v-bind:title="todo.title" v-on:remove="todos.splice(index, 1)"></todo-item>
+                </div>
+            </div> -->
+        </main>
+        <footer>
+
+
+        </footer>
+    </div>
+    <div id="todo-list-example" class="demo">
+
+        <ul>
+            <todo-item v-for="(todo, index) in todos" v-bind:key="todo.id" v-bind:title="todo.title" v-on:remove="todos.splice(index, 1)"></todo-item>
+        </ul>
+    </div>
+    <script src="js/main.js"></script>
+
+</body>
+
+</html>
