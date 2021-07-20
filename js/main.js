@@ -2,7 +2,9 @@ const vm = Vue.createApp({
     data() {
         return {
             show: false,
+            dataFromChild: '',
             showType: 'computer',
+            editMode: false,
             todos: [{
                     id: 1,
                     qvesn: '216911001',
@@ -71,11 +73,16 @@ const vm = Vue.createApp({
                 title: this.newTodoText
             })
             this.newTodoText = ''
-        }
+        },
+        getChildData(param) {
+            this.dataFromChild = param;
+            // console.log('567890');
+        },
+
 
     },
+    emits: ['accepted']
 })
-
 
 vm.component('todo-item', {
     template: `
@@ -90,15 +97,20 @@ vm.component('todo-item', {
                 {{ type }}
             </div>
             <div class="col-sm-3">
-                {{ model }}
+                {{ model }}{{ count }}
             </div>
-            <div class="col-sm-1">
-                <a href="javascript:;"><i class="fas fa-edit"></i></a>
+            <div class="col-sm-1 " @click="$emit('accepted')" >
+                <a href="javascript:;" > <i class="fas fa-edit"></i></a>
             </div>
             </span>
           `,
     props: ['qvesn', 'title', 'type', 'model'],
-    emits: ['remove']
+    // emits: ['remove'],
+    methods: {
+        alertMsg() {
+            this.$emit("getTest", 'ddddd');
+        }
+    }
 })
 
 vm.component('todo-monitor', {
@@ -116,14 +128,20 @@ vm.component('todo-monitor', {
             <div class="col-sm-3">
                 {{ model }}
             </div>
-            <div class="col-sm-1">
+            <div class="col-sm-1" @click="alertMsg">
                 <a href="javascript:;"><i class="fas fa-edit"></i></a>
             </div>
             </span>
           `,
     props: ['qvesn', 'title', 'type', 'model'],
-    emits: ['remove']
+    emits: ['remove'],
+    methods: {
+        alertMsg() {
+            alert("click Monitor event is happen")
+        }
+    }
 })
+
 
 vm.mount("#app");
 
